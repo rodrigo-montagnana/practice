@@ -1,0 +1,7 @@
+server {
+   listen 80;
+   server_name localhost ;
+   location / {
+     proxy_pass http://{{ hostvars['ubuntu2204jfish0']['ansible_facts']['default_ipv4']['address'] }}:19999 ;
+   }
+}

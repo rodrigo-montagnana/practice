@@ -1,0 +1,72 @@
+---
+- name: set default value to var, if not defined
+  ansible.builtin.set_fact:
+    debugvar: "{% if debugvar is defined %}{{debugvar}}{% else %}False{% endif %}"
+   
+- name: Ensure selinux is disabled on host centos8stream0.local
+  ansible.posix.selinux:
+    state: disabled
+  when: "'centos8stream0' in inventory_hostname"
+
+- name: Ensure firewalld is disabled
+  ansible.builtin.systemd:
+    name: firewalld.service
+    state: stopped
+    enabled: false
+  register: firewalld_service_disable
+  failed_when: "'Could not find the requested service firewalld.service' not in firewalld_service_disable.msg"
+  ignore_errors: yes
+  when: "'centos8stream0' in inventory_hostname"
+
+- name: print firewalld_service_disable
+  debug:
+    msg: "{{ firewalld_service_disable }}"
+  when: debugvar|bool
+
+- name: Ensure Netdata is installed on BACKEND group - GPG Key
+  ansible.builtin.apt_key:
+    url: https://repo.netdata.cloud/netdatabot.gpg.key
+    state: present
+    id: 6588FDD7B14721FE7C3115E6F9177B5265F56346
+  when: inventory_hostname in groups['backend']
+
+- name: Ensure Netdata is installed on BACKEND group - repository
+  ansible.builtin.apt_repository:
+    repo: 'deb https://repo.netdata.cloud/repos/stable/ubuntu jammy/'
+    state: present
+  when: inventory_hostname in groups['backend']
+
+- name: Ensure Netdata is installed on BACKEND group - packages
+  apt:
+    name: netdata
+    state: present
+    install_recommends: yes
+    update_cache: yes
+  when: inventory_hostname in groups['backend']
+
+- name: Ensure Netdata config file
+  template:
+    src: netdata.conf.j2
+    dest: /etc/netdata/netdata.conf
+  when: inventory_hostname in groups['backend']
+  notify: Restart Netdata
+
+- name: Ensure nginx is installed on FRONTEND group
+  ansible.builtin.yum:
+    name: nginx.x86_64
+    state: latest
+  when: inventory_hostname in groups['frontend']
+
+- name: Ensure nginx config file
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+  when: inventory_hostname in groups['frontend']
+  notify: Restart Nginx
+
+- name: Ensure nginx config file
+  template:
+    src: proxy_pass.conf.j2
+    dest: /etc/nginx/conf.d/proxy_pass.conf
+  when: inventory_hostname in groups['frontend']
+  notify: Restart Nginx

@@ -1,0 +1,15 @@
+[frontend]
+%{for index, group in ansible_group_centos ~} 
+${ group == "frontend" ? hostname_centos[index] : "" }
+%{ endfor ~}
+%{for index, group in ansible_group_ubuntu ~} 
+${ group == "frontend" ? hostname_ubuntu[index] : "" }
+%{ endfor ~}
+
+[backend]
+%{for index, group in ansible_group_centos ~} 
+${ group == "backend" ? hostname_centos[index] : "" }
+%{ endfor ~}
+%{for index, group in ansible_group_ubuntu ~} 
+${ group == "backend" ? hostname_ubuntu[index] : "" }
+%{ endfor ~}
