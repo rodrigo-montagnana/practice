@@ -3,3 +3,4 @@
 .terraform/
 ansible/roles/inventories/*
 terraform.tfstate*
+packer*
