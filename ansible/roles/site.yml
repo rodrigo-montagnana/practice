@@ -1,8 +1,8 @@
 ---
 - name: Simple Tasks Automation
-  gather_facts: yes
+  gather_facts: true
   remote_user: rmontagnana
-  become: yes
+  become: true
   hosts: all
   roles:
     - role: practice

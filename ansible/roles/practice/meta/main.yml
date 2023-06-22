@@ -1,7 +1,10 @@
-galaxy_info:
-  author: Practice
-  description: Test
-  company: For test purposes only
-  license: license (GPL-2.0-or-later, MIT, etc)
-  min_ansible_version: 2.1
-dependencies: []
+---
+argument_specs:
+  main:
+    short_description: The main entry for practice role
+  galaxy_info:
+    author: Practice
+    description: Test
+    company: For test purposes only
+    license: GPL-2.0-or-later
+    min_ansible_version: 2.1

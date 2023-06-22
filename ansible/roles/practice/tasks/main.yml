@@ -1,8 +1,8 @@
 ---
-- name: set default value to var, if not defined
+- name: Set default value to var, if not defined
   ansible.builtin.set_fact:
-    debugvar: "{% if debugvar is defined %}{{debugvar}}{% else %}False{% endif %}"
-   
+    debugvar: "{% if debugvar is defined %}{{ debugvar }}{% else %}False{% endif %}"
+
 - name: Ensure selinux is disabled on host centos8stream0.local
   ansible.posix.selinux:
     state: disabled
@@ -15,11 +15,11 @@
     enabled: false
   register: firewalld_service_disable
   failed_when: "'Could not find the requested service firewalld.service' not in firewalld_service_disable.msg"
-  ignore_errors: yes
+  ignore_errors: true
   when: "'centos8stream0' in inventory_hostname"
 
-- name: print firewalld_service_disable
-  debug:
+- name: Print firewalld_service_disable
+  ansible.builtin.debug:
     msg: "{{ firewalld_service_disable }}"
   when: debugvar|bool
 
@@ -37,17 +37,18 @@
   when: inventory_hostname in groups['backend']
 
 - name: Ensure Netdata is installed on BACKEND group - packages
-  apt:
+  ansible.builtin.apt:
     name: netdata
     state: present
-    install_recommends: yes
-    update_cache: yes
+    install_recommends: true
+    update_cache: true
   when: inventory_hostname in groups['backend']
 
 - name: Ensure Netdata config file
-  template:
+  ansible.builtin.template:
     src: netdata.conf.j2
     dest: /etc/netdata/netdata.conf
+    mode: '0744'
   when: inventory_hostname in groups['backend']
   notify: Restart Netdata
 
@@ -58,15 +59,17 @@
   when: inventory_hostname in groups['frontend']
 
 - name: Ensure nginx config file
-  template:
+  ansible.builtin.template:
     src: nginx.conf.j2
     dest: /etc/nginx/nginx.conf
+    mode: '0744'
   when: inventory_hostname in groups['frontend']
   notify: Restart Nginx
 
 - name: Ensure nginx config file
-  template:
+  ansible.builtin.template:
     src: proxy_pass.conf.j2
     dest: /etc/nginx/conf.d/proxy_pass.conf
+    mode: '0744'
   when: inventory_hostname in groups['frontend']
   notify: Restart Nginx
