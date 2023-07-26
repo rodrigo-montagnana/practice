@@ -1,0 +1,845 @@
+    1  ip addr show
+    2  useradd -g wheels rmontagnana
+    3  grep -i whe /etc/group
+    4  useradd -g wheel rmontagnana
+    5  passwd rmontagnana
+    6  hostnamectl set-hostname kvm
+    7  sudo su -
+    8  shutdown -h nwo
+    9  set -o vi
+   10  shutdown -h now
+   11  yum repolist
+   12  yum list
+   13  exit
+   14  yum module list
+   15  podman search httpd
+   16  set -o vi
+   17  podman search httpd --filter=is-official
+   18  podman pull docker.io/library/httpd
+   19  podman images
+   20  df
+   21  ls -l /sys
+   22  ls -l /sys/fs
+   23  ls -l /sys/fs/cgroup/
+   24  ls -l /var/lib/containers/
+   25  ls -l /var/lib/containers/cache/
+   26  file /var/lib/containers/cache/blob-info-cache-v1.boltdb
+   27  ls -l /var/lib/containers/sigstore/
+   28  ls -l /var/lib/containers/storage/
+   29  ls -l /var/lib/containers/storage/overlay-images/
+   30  cat /var/lib/containers/storage/overlay-images/images.json
+   31  ls -l /var/lib/containers/storage/overlay-images/d140b777a2479269039acf5d0915d4a8d8ae4cf3e58eec2f0f51a676c7ef08ea/
+   32  cat /var/lib/containers/storage/overlay-images/d140b777a2479269039acf5d0915d4a8d8ae4cf3e58eec2f0f51a676c7ef08ea/manifest
+   33  $ podman run -dt -p 8080:80/tcp docker.io/library/httpd
+   34  vi /etc/default/grub
+   35  set -o vi
+   36  vi /etc/default/grub
+   37  ls -l /boot/grub2/grub.cfg
+   38  grep -i ipv /boot/grub2/grub.cfg
+   39  grub2-mkconfig -o /boot/grub2/grub.cfg
+   40  grep -i ipv /boot/grub2/grub.cfg
+   41  shutdown -r now
+   42  ip addr show
+   43  yum list | grep -i slirp
+   44  set -o vi
+   45  yum history
+   46  yum history info 2
+   47  cat /proc/sys/user/max_user_namespaces
+   48  cat /etc/subuid
+   49  cat /etc/containers/storage.conf
+   50  set -o vi
+   51  less /etc/containers/storage.conf
+   52  cay /etc/containers/registries.conf
+   53  cat |/etc/containers/registries.conf
+   54  cat /etc/containers/registries.conf
+   55  grep -v ^\# /etc/containers/registries.conf
+   56  set -o vi
+   57  selinuxenabled
+   58  set -o vi
+   59  iptables -L
+   60  tcpdump -i all
+   61  ip addr show
+   62  man tcpdump
+   63  ip addr show
+   64  tail -v /var/log/messages &
+   65  tail -v /var/log/kernel &
+   66  dmesg
+   67  ip addr show
+   68  tcpdump -i enp0s3
+   69  tcpdump -i enp0s3 port 8080
+   70  tmux
+   71  nmcli device
+   72  ip addr show
+   73  set -o vi
+   74  nmcli connection
+   75  nmcli connection enp0s3
+   76  nmcli connection get enp0s3
+   77  nmcli connection show enp0s3
+   78  nmcli connection modify enp0s3 ipv6.method=disabled
+   79  nmcli connection modify enp0s3 ipv6.method=disable
+   80  nmcli connection modify enp0s3 ipv6.method=ignore
+   81  nmcli connection modify enp0s3 ipv6.methoddisabled
+   82  nmcli connection modify enp0s3 ipv6.method disabled
+   83  nmcli connection show enp0s3
+   84  nmcli connection modify enp0s8 ipv6.method disabled
+   85  systemctl restart NetworkManager
+   86  tail -f /var/log/messages
+   87  man iptables
+   88  iptables -F
+   89  set -o vi
+   90  iptables -l
+   91  iptables -L
+   92  getenforce
+   93  setenforce 0
+   94  getenforce
+   95  vi /etc/selinux/config
+   96  vi /etc/default/grub
+   97  grub2-mkconfig -o /boot/grub2/grub.cfg
+   98  podman container list
+   99  ip addr show
+  100  nmcli connection
+  101  set -o vi
+  102  nmcli connection  enp0s3 down
+  103  nmcli connection down enp0s3
+  104  nmcli connection down enp0s8
+  105  nmcli connection up enp0s8
+  106  nmcli connection up enp0s3
+  107  ip addr show
+  108  dmesg
+  109  less /var/log/messages
+  110  shutdown -r now
+  111  tcpdump -i enp0s3 port 8080
+  112  set -o vi
+  113  tcpdump -nnnn -i enp0s3 port 8080
+  114  tcpdump -nnnn -i enp0s3 port 8080 -vvv -X
+  115  ip addr show
+  116  set -o vi
+  117  tcpdump -nnnn -i enp0s3 port 8080 -vvv -X
+  118  history | grep -i podman
+  119  yum list installed | grep -i python
+  120  yum install python3
+  121  python3
+  122  yum list | grep -i python | grep -i mysql
+  123  yum module list
+  124  set -o vi
+  125  yum module list | grep -i mysql
+  126  yum module --help
+  127  yum module info mysql
+  128  yum info python3-PyMySQL.noarch
+  129  yum install python3-PyMySQL.noarch
+  130  rpm -qa | grep -i python
+  131  yum list | grep -i python
+  132  yum install python3.11.x86_64
+  133  alternatives --list
+  134  set -o vi
+  135  alternatives --help
+  136  alternatives --display python3
+  137  ls -l /usr/bin/python3.11
+  138  alternatives --set python3 /usr/bin/python3.11
+  139  alternatives --display python3
+  140  set -o vi
+  141  alternatives --set python3 /usr/bin/python3.11
+  142  alternatives --display python3
+  143  shutdown -h now
+  144  # nmcli connection modify enp0s3 ipv4.method manual ipv4.address 192.168.15.9 ipv4.gateway 192.168.15.1
+  145  nmcli connection show enp0s3 | grep -i netmas
+  146  set -o vi
+  147  nmcli connection show enp0s3 | grep -i sub
+  148  nmcli connection modify enp0s3 ipv4.method manual ipv4.address 192.168.15.9 ipv4.gateway 192.168.15.1
+  149  nmcli connection show enp0s3 | grep -i sub
+  150  nmcli connection show enp0s3 | less
+  151  nmcli connection modify enp0s3 ipv4.method manual ipv4.address 192.168.15.9/24 ipv4.gateway 192.168.15.1
+  152  nmcli connection show enp0s3 | less
+  153  nmcli connection help
+  154  nmcli connection reload enp0s3
+  155  nmcli connection show enp0s3 | less
+  156  ip addr show
+  157  ping google.com
+  158  nmcli connection modify enp0s3 ipv4.method manual ipv4.address 192.168.15.9/24 ipv4.gateway 192.168.15.1 ipv4.dns 192.168.15.1
+  159  nmcli connection reload enp0s3
+  160  ping google.com
+  161  for connection in $(nmcli --fields uuid connection show | grep -vi uuid); do    nmcli connection modify ${connection} ipv6.method disabled; done
+  162  for device in $(nmcli --fields general.device device show | grep -v lo | cut -d \: -f 2  | grep -v ^$  | awk ' {print $1}'); do    nmcli device reapply ${device}; done
+  163  for device in $(nmcli --fields general.device device show | grep -v lo | cut -d \: -f 2  | grep -v ^$  | awk ' {print $1}'); do    nmcli device reapply ${device}
+  164  systemctl enable libvirtd]
+  165  systemctl enable libvirtd
+  166  systemctl start libvirtd
+  167  systemctl status libvirtd
+  168  mount -o ro /dev/sr1 /tmp/tmp
+  169  mkdir /tmp/tmp
+  170  mount -o ro /dev/sr1 /tmp/tmp
+  171  lsblk
+  172  mount -o ro /dev/sr0 /tmp/tmp
+  173  /tmp/tmp/VBoxLinuxAdditions.run --nox11
+  174  cat /var/log/vboxadd-setup.log
+  175  shutdown -h now
+  176  nmcli connection down enp0s3
+  177  set -o vi
+  178  nmcli connection up enp0s3
+  179  nmcli connection down enp0s3
+  180  nmcli connection up enp0s3
+  181  df\
+  182  df
+  183  set -o vi
+  184  systemctl status vboxadd-service.service
+  185  systemctl daemon-reload
+  186  systemctl status vboxadd-service.service
+  187  systemctl status vboxadd.service
+  188  systemctl status libvirtd
+  189  sudo yum install -y yum-utils
+  190  sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+  191  sudo yum -y install terraform
+  192  vgs
+  193  df -g
+  194  df -h
+  195  shutdown -h now
+  196  lsblk
+  197  vgs
+  198  vgextend cs /dev/sdc
+  199  df -hP
+  200  set -o vi
+  201  lvextend -r -L +2G /dev/mapper/cs-usr
+  202  df -hPT
+  203  vgextend cs /dev/sdd
+  204  vgextend cs /dev/sdb
+  205  lvextend -r -L +10G /dev/mapper/cs-data
+  206  df -hP
+  207  yum -y install terraform
+  208   df
+  209  mkdir /data/isos
+  210  ls -l /var/lib/libvirt/images
+  211  cat << EOF > /tmp/create_default_pool.txt
+  212  <pool type='dir'>
+  213    <name>default</name>
+  214    <target>
+  215      <path>/var/lib/libvirt/images</path>
+  216      <permissions>
+  217        <mode>0755</mode>
+  218        <owner>0</owner>
+  219        <group>0</group>
+  220        <label>system_u:object_r:unlabeled_t:s0</label>
+  221      </permissions>
+  222    </target>
+  223  </pool>
+  224  EOF
+  225  mkdir -p /data/lib/libvirt/images
+  226  vi /tmp/create_default_pool.txt
+  227  virsh pool-define /tmp/create_default_pool.txt
+  228  virsh pool-start default
+  229  virsh pool-autostart default
+  230  cat << EOF > /tmp/create_iso_pool.txt
+  231  <pool type='dir'>
+  232    <name>isos</name>
+  233    <target>
+  234      <path>/isos</path>
+  235      <permissions>
+  236        <mode>0755</mode>
+  237        <owner>0</owner>
+  238        <group>0</group>
+  239        <label>system_u:object_r:unlabeled_t:s0</label>
+  240      </permissions>
+  241    </target>
+  242  </pool>
+  243  EOF
+  244  vi /tmp/create_iso_pool.txt
+  245  ls -l /data/isos
+  246  df -hPT /data/isos
+  247  virsh pool-define /tmp/create_iso_pool.txt
+  248  virsh pool-start isos
+  249  virsh pool-autostart isos
+  250  virsh pool-list
+  251  virsh pool-info isos
+  252  yum info bind
+  253  yum install bind
+  254  yum info bind
+  255  shutdown -h now
+  256  cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+  257  overlay
+  258  br_netfilter
+  259  EOF
+  260  cat /etc/modules-load.d/k8s.conf
+  261  modprobe overlay
+  262  modprobe br_netfilter
+  263  cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+  264  net.bridge.bridge-nf-call-iptables  = 1
+  265  net.bridge.bridge-nf-call-ip6tables = 1
+  266  net.ipv4.ip_forward                 = 1
+  267  EOF
+  268  sysctl --system
+  269  lsmod | grep br_netfilter
+  270  lsmod | grep overlay
+  271  sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward
+  272  yum list | grep -i containerd
+  273  set -o vi
+  274  yum list
+  275  yum list  | grep -i cont
+  276  yum list  | grep -i container
+  277  pwd
+  278  man curl
+  279  curl -O https://github.com/containerd/containerd/releases/download/v1.7.2/containerd-1.7.2-linux-amd64.tar.gz
+  280  ls -ltra
+  281  tar tvf containerd-1.7.2-linux-amd64.tar.gz
+  282  tar ztvf containerd-1.7.2-linux-amd64.tar.gz
+  283  tar tzvf containerd-1.7.2-linux-amd64.tar.gz
+  284  zcat containerd-1.7.2-linux-amd64.tar.gz
+  285  man tar
+  286  file containerd-1.7.2-linux-amd64.tar.gz
+  287  curl -O https://github.com/containerd/containerd/releases/download/v1.7.2/containerd-1.7.2-linux-amd64.tar.gz
+  288  man curl
+  289  curl --version
+  290  curl -o containerd-1.7.2-linux-amd64.tar.gz https://github.com/containerd/containerd/releases/download/v1.7.2/containerd-1.7.2-linux-amd64.tar.gz
+  291  ls -ltra
+  292  curl https://github.com/containerd/containerd/releases/download/v1.7.2/containerd-1.7.2-linux-amd64.tar.gz
+  293  man curl
+  294  curl -LO https://github.com/containerd/containerd/releases/download/v1.7.2/containerd-1.7.2-linux-amd64.tar.gz
+  295  ls -ltra
+  296  curl -LIO https://github.com/containerd/containerd/releases/download/v1.7.2/containerd-1.7.2-linux-amd64.tar.gz
+  297  ls -ltra
+  298  tar tzvf containerd-1.7.2-linux-amd64.tar.gz
+  299  rm containerd-1.7.2-linux-amd64.tar.gz
+  300  curl -LO https://github.com/containerd/containerd/releases/download/v1.7.2/containerd-1.7.2-linux-amd64.tar.gz
+  301  tar tzvf containerd-1.7.2-linux-amd64.tar.gz
+  302  tar tv containerd-1.7.2-linux-amd64.tar.gz
+  303  tar tvf containerd-1.7.2-linux-amd64.tar.gz
+  304  tar ztvf containerd-1.7.2-linux-amd64.tar.gz
+  305  man tar
+  306  tar Cxzvf /usr/local containerd-1.6.2-linux-amd64.tar.gz
+  307  man tar
+  308  tar Cxzvf /usr/local containerd-1.6.2-linux-amd64.tar.gz
+  309  cd /usr/local/
+  310  tar xzvf /root/containerd-1.7.2-linux-amd64.tar.gz
+  311  ls -ltra
+  312  ls -l bin
+  313  ls -ltra
+  314  curl -L https://raw.githubusercontent.com/containerd/containerd/main/containerd.service
+  315  curl --output /usr/local/lib/systemd/system/containerd.service -L https://raw.githubusercontent.com/containerd/containerd/main/containerd.service
+  316  cd /etc/systemd/
+  317  ls -l
+  318  cd sys
+  319  cd system/
+  320  ls -l
+  321  find /usr -name systemcd
+  322  find /usr -name systemd
+  323  cd /usr/lib/systemd
+  324  ls -l
+  325  ls
+  326  curl --output /usr/lib/systemd/system/containerd.service -L https://raw.githubusercontent.com/containerd/containerd/main/containerd.service
+  327  cat /usr/lib/systemd/system/containerd.service
+  328  systemctl daemon-reload
+  329  systemctl status containerd.service
+  330  systemctl enable containerd.service
+  331  man curl
+  332  curl -LI https://github.com/containerd/containerd/releases/download/v1.7.2/containerd-1.7.2-linux-amd64.tar.gz
+  333  curl -LI https://github.com/opencontainers/runc/releases
+  334  curl -LO https://github.com/opencontainers/runc/releases/download/v1.1.8/runc.amd64
+  335  ls -ltra
+  336  mv runc.amd64 /usr/local/sbin/
+  337  runc
+  338  curl -LO https://github.com/containernetworking/plugins/releases/download/v1.3.0/cni-plugins-linux-amd64-v1.3.0.tgz
+  339  mkdir -p /opt/cni/bin
+  340  tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v1.1.1.tgz
+  341  cd /opt/cni/bin
+  342  ls -ltra
+  343  cd -
+  344  ls -ltra
+  345  mv cni-plugins-linux-amd64-v1.3.0.tgz /root
+  346  cd -
+  347  tar Cxzvf /root/cni-plugins-linux-amd64-v1.1.1.tgz
+  348  tar tvf /root/cni-plugins-linux-amd64-v1.1.1.tgz
+  349  ls -l /root/cni-plugins-linux-amd64-v1.3.0.tgz
+  350  tar tvf /root/cni-plugins-linux-amd64-v1.3.0.tgz
+  351  tar ztvf /root/cni-plugins-linux-amd64-v1.3.0.tgz
+  352  tar zxvf /root/cni-plugins-linux-amd64-v1.3.0.tgz
+  353  ls -ltra
+  354  ls -l /root
+  355  ls -l /etc/containerd/config.toml
+  356  yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.rep
+  357   yum list
+  358  cat //download.docker.com/linux/centos/docker-ce.rep
+  359  yum repolist
+  360  yum repolist
+  361  cd /etc/yum.repos.d/
+  362  ls l-tra
+  363  ls -ltra
+  364  cat download.docker.com_linux_centos_docker-ce.rep.repo
+  365  yum list
+  366  ls -ltra
+  367  rm download.docker.com_linux_centos_docker-ce.rep.repo
+  368  yum repolist
+  369  yum list
+  370  vi /etc/containerd/config.toml
+  371  mkdir /etc/containerd
+  372  mv /tmp/config.toml /etc/containerd
+  373  systemctl status containerd
+  374  systemctl stop containerd
+  375  systemctl start containerd
+  376  systemctl status containerd
+  377  systemctl status containerd -l
+  378  journalctl -xe
+  379  cat /etc/containerd/config.toml
+  380  journalctl -xe
+  381  vi /etc/containerd/config.toml
+  382  systemctl reset containerd
+  383  systemctl reset-failed containerd
+  384  systemctl stop containerd -l
+  385  systemctl status containerd -l
+  386  systemctl start containerd -l
+  387  systemctl status containerd -l
+  388  kcat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+  389  [kubernetes]
+  390  name=Kubernetes
+  391  baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+  392  enabled=1
+  393  gpgcheck=1
+  394  gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+  395  cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+  396  [kubernetes]
+  397  name=Kubernetes
+  398  baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+  399  enabled=1
+  400  gpgcheck=1
+  401  gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+  402  EOF
+  403  yum list
+  404  yum info kubectl.x86_64
+  405  yum install kubectl
+  406  kubectl cluster-info
+  407  kubectl config view
+  408  virsh list
+  409  virsh list -l
+  410  virsh list -a
+  411  virsh list -all
+  412  virsh list -a
+  413  virsh list --all
+  414  yum provides qemu-kvm
+  415  yum install qemu-kvm-15
+  416  yum list | grep qemu-kvm-15
+  417  set -o vi
+  418  yum ist | grep qemu-kvm
+  419  yum install qemu-kvm
+  420  yum install qemu-kvm
+  421  modprobe kvm-intel
+  422  lsmod | grep -i kvm
+  423  cat /etc/modules.conf
+  424  egrep '^flags.*(vmx|svm)' /proc/cpuinf
+  425  set -o vi
+  426  egrep '^flags.*(vmx|svm)' /proc/cpuinfo
+  427  ls -l /dev/kvm
+  428  systemctl status libvirtd
+  429  cat /proc/modules
+  430  cat /proc/modules | grep -i kvm
+  431  kvm-ok
+  432  kvm_stat
+  433  systemctl status libvirtd
+  434  uptime
+  435  /usr/libexec/qemu-kvm --help
+  436  /usr/libexec/qemu-kvm --help  | grep -i type
+  437  systemctl status libvirtd
+  438  /usr/libexec/qemu-kvm --type=kvm
+  439  /usr/libexec/qemu-kvm type=kvm
+  440  /usr/libexec/qemu-kvm --help | less
+  441  /usr/libexec/qemu-kvm -machine type=kvm
+  442  /usr/libexec/qemu-kvm -machine help
+  443  lsmod
+  444  lsmod | grep -i kvm
+  445  lsmod | grep -i kvm
+  446  systemctl status vboxadd.service
+  447  modprobe kvm_intel nested=1
+  448  virt-host-validate
+  449  shutdown -h now
+  450  set -o vi
+  451  virt-host-validate
+  452  egrep '(vmx|svm)' /proc/cpuinfo
+  453  cat /proc/cpuinfo
+  454  set -o vi
+  455  egrep '(vmx|svm)' /proc/cpuinfo
+  456  virt-host-validate
+  457  history
+
+
+    1  sudo su -
+    2  virsh
+    3  set -o vi
+    4  podman
+    5  sudo yum list | grep -i podman
+    6  sudo su -
+    7  sudo yum list | grep -i podman
+    8  sudo yum install podman
+    9  podman
+   10  podman machine
+   11  podman machine info
+   12  podman machine list
+   13  sudo su -
+   14  $ podman run -dt -p 8080:80/tcp docker.io/library/httpd
+   15  podman run -dt -p 8080:80/tcp docker.io/library/httpd
+   16  podman pod ps
+   17  ls -ltra
+   18  podman run -dt -p 8080:80/tcp docker.io/library/httpd
+   19  netstat
+   20  sudo netstat -pan | grep 808
+   21  ps -ef | grep 39082
+   22  podman container ps
+   23  telnet
+   24  nc
+   25  nc localhost 80
+   26  nc localhost 8080
+   27  podman ps
+   28  podman ps -a
+   29  curl http://localhost:8080
+   30  podman container
+   31  podman container exec xenodochial_dijkstra ps
+   32  podman container exec xenodochial_dijkstra ls
+   33  podman container exec xenodochial_dijkstra df
+   34  podman container exec xenodochial_dijkstra df -hPT
+   35  podman container exec xenodochial_dijkstra ls -l
+   36  podman container exec xenodochial_dijkstra ls -l /cgi-bin
+   37  podman container exec xenodochial_dijkstra ls -l cgi-bin
+   38  podman container exec xenodochial_dijkstra pwd
+   39  podman container exec xenodochial_dijkstra ls -l /
+   40  podman container exec xenodochial_dijkstra ls -l /bin
+   41  podman container exec xenodochial_dijkstra ls -l /usr/bin
+   42  podman container exec xenodochial_dijkstra ls /usr/bin
+   43  podman container exec xenodochial_dijkstra ls /usr/bin | cat
+   44  podman container exec xenodochial_dijkstra ls /usr/bin | less
+   45  podman container exec xenodochial_dijkstra cat /etc/hostname
+   46  podman ps -a
+   47  podman container exec xenodochial_dijkstra cat /etc/os-release
+   48  podman container exec xenodochial_dijkstra ls
+   49  podman container exec xenodochial_dijkstra ls bin
+   50  podman container exec xenodochial_dijkstra ls -l
+   51  podman container exec xenodochial_dijkstra ls -l build
+   52  podman container exec xenodochial_dijkstra ls -l cgi-bin
+   53  podman container exec xenodochial_dijkstra cat cgi-bin/test-cgi
+   54  podman container exec xenodochial_dijkstra ls -l
+   55  podman container exec xenodochial_dijkstra ls -l conf
+   56  podman container exec xenodochial_dijkstra cat conf/httpd.conF
+   57  podman container exec xenodochial_dijkstra cat conf/httpd.conf
+   58  podman container exec xenodochial_dijkstra cat conf/httpd.conf | grep -v ^\#
+   59  podman container exec xenodochial_dijkstra cat conf/extra/proxy-html.conf
+   60  podman container exec xenodochial_dijkstra cat conf/extra/proxy-html.conf | less
+   61  podman container exec xenodochial_dijkstra cat conf/httpd.conf | grep -v ^\# | grep -v ^#
+   62  podman container exec xenodochial_dijkstra find
+   63  podman container exec xenodochial_dijkstra find / -name index.html
+   64  podman container exec xenodochial_dijkstra cat /usr/local/apache2/htdocs/index.html
+   65  podman container exec xenodochial_dijkstra pwd
+   66  curl http://localhost:8080
+   67  ip addr show
+   68  podman container ps
+   69  podman pod ps
+   70  podman pod
+   71  podman pod ps
+   72  podman container ps
+   73  podman logs
+   74  podman logs d367b024624f
+   75  curl http://localhost:8080
+   76  podman logs d367b024624f
+   77  podman top
+   78  podman top  d367b024624f
+   79  ip addr show
+   80  sudo su -
+   81  sudo su-
+   82  sudo su -
+   83  podman container ps
+   84  set -o vi
+   85  podman pod ps
+   86  podman --runtime
+   87  podman --runtime  --help
+   88  podman --runtime crun
+   89  sudo su -
+   90  cat /etc/containers/registries.conf
+   91  grep -v ^\# /etc/containers/registries.conf
+   92  ls -l
+   93  ls -la
+   94  ls -la .config/
+   95  ls -la .config/containers/
+   96  ls -la .config/containers/podman/
+   97  ls -la .config/containers/podman/machine/
+   98  ls -la .config/containers/podman/machine/qemu/
+   99  podman run -dt -p 8080:80/tcp docker.io/library/httpd
+  100  podman container ps
+  101  netstat -pan | grep 8080
+  102  sudo netstat -pan | grep 8080
+  103  ps -ef | grep 265
+  104  sudo netstat -pan | grep 80
+  105  podman logs 232998f2ca92f73a438e1812043929f16c9ee496ea526a8e8b7a5d94b9a45714
+  106  ip addr show
+  107  podman logs 232998f2ca92f73a438e1812043929f16c9ee496ea526a8e8b7a5d94b9a45714
+  108  sudo netstat -pan | grep 80
+  109  sudo su -
+  110  tmux
+  111  sudo su -
+  112  curl localhost:8080
+  113  date
+  114  set -o vi
+  115  curl localhost:8080
+  116  curl 192.168.15.6:8080
+  117  podman container list
+  118  podman container stop f41fc8d7fd94
+  119  su
+  120  podman container list
+  121  sudo netstat -pan | less
+  122  podman run -dt -p 192.168.15.6:8080:80/tcp docker.io/library/httpd
+  123  podman container list
+
+  124  set -o vi
+  125  curl 192.168.15.6:8080
+  126  set -o vi
+  127  podman logs d367b024624f
+  128  podman container list
+  129  podman logs 232998f2ca92
+  130  podman --help | less
+  131  podman attach 232998f2ca92
+  132  podman logs 232998f2ca92
+  133  podman container ps
+  134  podman run -dt -p 8080:80/tcp docker.io/library/httpd
+  135  podman logs f41fc8d7fd94de5a28c0abfe32ae5c630766f386850f7858c58c11a44788046c
+  136  while true; do podman logs f41fc8d7fd94de5a28c0abfe32ae5c630766f386850f7858c58c11a44788046c; sleep 1; done
+  137  podman container list
+  138  podman logs f4a79b76bfbb
+  139  sudo su -
+  140  podman container list
+  141  podman container kill  f4a79b76bfbb
+  142  podman run -dt -p 8080:80/tcp docker.io/library/httpd
+  143  podman container logs 1874ce20d7381aa395ea5d7920e5105f168fb0e2a6152f2cc8beb46fdac4a3d8
+  144  sudo su-
+  145  sudo su -
+  146  set -o vi
+  147  sudo su -
+  148  sudo su 0
+  149  sudo su -
+  150  tmux ls
+  151  tmux a
+  152  set -o vi
+  153  podman run -dt -p 8080:80/tcp docker.io/library/httpd
+  154  podman container logs 8fc3c3044439
+  155  ip addr show
+  156  systemctl status firewalld
+  157  systemctl stop firewalld
+  158  systemctl status firewalld
+  159  systemctl disable firewalld
+  160  systemctl status firewalld
+  161  podman container list
+  162  podman container kill 8fc3c3044439
+  163  podman run -dt -p 8080:80/tcp docker.io/library/httpd
+  164  podman container logs 31f946e7e162
+  165  sudo su -
+  166  history | grep -i podman | grep -i pull
+  167  set -o vi
+  168  history | grep -i podman |
+  169  history | grep -i podman
+  170  history | grep -i podman  | less
+  171  sudo su -
+  172  podman pull mysql/mysql-server:latest
+  173  podman pull container-registry.oracle.com/mysql/community-server
+  174  podman images
+  175  podman run -dt
+  176  podman container ps
+  177  podman container list
+  178  podman  list
+  179  podman
+  180  podman container list -a
+  181  podman rm d367b024624f
+  182  podman container list -a
+  183  podman container list -a | grep Exit
+  184  podman container list -a | grep Exit | awk '{print $1}'
+  185  podman container list -a | grep Exit | awk '{print $1}'  | xargs -n1 podman rm
+  186  podman container list -a
+  187  podman logs d367b024624f
+  188  podman container log d367b024624f
+  189  podman container logs d367b024624f
+  190  podman container start d367b024624f
+  191  podman container logs 0b34512e9d74
+  192  podman container ps 0b34512e9d74
+  193  podman container start 0b34512e9d74
+  194  ps -ef | grep 8080
+  195  sudo netstat -pan | grep 8080
+  196  kill 8080
+  197  sudo netstat -pan | grep 8080
+  198  podman container ps 0b34512e9d74
+  199  podman container list -a
+  200  podman container logs 0b34512e9d74
+  201  podman container start 0b34512e9d74
+  202  sudo netstat -pan | grep 8080
+  203  podman container list -a
+  204  podman container stop 0b34512e9d74
+  205  podman container rm 0b34512e9d74
+  206  podman container stop
+  207  podman container stop d8880e196af8
+  208  podman container rm d8880e196af8
+  209  podman run -dt --name=mysql --restart on-failure -d container-registry.oracle.com/mysql/community-server:latest
+  210  podman container list -a
+  211  podman container logs
+  212  podman container logs  976650e8dcb3
+  213  podman container --help
+  214  podman container exec /bin/bash
+  215  podman container 976650e8dcb3 exec /bin/bash
+  216  podman container exec 976650e8dcb3 /bin/bash
+  217  podman container exec 976650e8dcb3 ps
+  218  podman container exec 976650e8dcb3 inspect
+  219  podman container inspect 976650e8dcb3
+  220  podman container inspect 976650e8dcb3  | less
+  221  podman container logs 976650e8dcb3  | less
+  222  podman container exec 976650e8dcb3 df
+  223  podman container exec 976650e8dcb3 ps
+  224  podman container exec 976650e8dcb3 ls -l /
+  225  podman container exec 976650e8dcb3 ls -l /bin
+  226  podman container exec 976650e8dcb3 ls -l /usr/bin
+  227  podman container exec 976650e8dcb3 /bin/bash
+  228  podman -it container exec 976650e8dcb3 /bin/bash
+  229  podman -it exec 976650e8dcb3 /bin/bash
+  230  podman exec -it 976650e8dcb3 /bin/bash
+  231  podman container list -a
+  232  ps -ef | grep 97665
+  233  sudo netstat -pan | grep -i 8981
+  234  podman ps
+  235  curl https://k8s.io/examples/pods/simple-pod.yaml
+  236  man curl
+  237  curl https://github.com/kubernetes/website/blob/main/content/en/examples/pods/simple-pod.yaml
+  238  podman container logs 976650e8dcb3  | less
+  239  history | grep -i run
+  240  podman ps
+  241  podman kill mysql
+  242  podman ps
+  243  podman ps -a
+  244  podman rm 976650e8dcb3
+  245  podman ps -a
+  246  podman run -p 33060:33060 -dt --name=mysql --restart on-failure -d container-registry.oracle.com/mysql/community-server:latest
+  247  python
+  248  pyvenv-3.6
+  249  sudo su -
+  250  python
+  251  python3
+  252  sudo su -
+  253  python3
+  254  pip search mysql-connector
+  255  python --version
+  256  python3 --version
+  257  python3.6
+  258  python3.6 --version
+  259  pip search mysql-connector
+  260  pip3 search mysql-connector
+  261  pip3 install mysql-connector-python
+  262  pip3 install mysql-connector-python --user
+  263  python3
+  264  sudo su -
+  265  python3
+  266  sudo yum list | grep -i python | grep -i pip
+  267  sudo yum install python3.11-pip.noarch
+  268  sudo su-
+  269  sudo su -
+  270  pip3.11 install mysql.connector
+  271  python3
+  272  podman run -p 3306:3306 -dt --name=mysql --restart on-failure -d container-registry.oracle.com/mysql/community-server:latest
+  273  python3
+  274  sudo su -
+  275  nmcli
+  276  set -o vi
+  277  nmcli connection enp0s3
+  278  nmcli connection show enp0s3
+  279  # nmcli connection modify enp0s3 ipv4.method manual ipv4.address 192.168.15.9 ipv4.gateway 192.168.15.1 ipv4.netmask
+  280  nmcli connection show enp0s3
+  281  nmcli connection show enp0s3 | grep -i mask
+  282  nmcli connection show enp0s3
+  283  nmcli connection modify enp0s3 ipv4.method manual ipv4.address 192.168.15.9 ipv4.gateway 192.168.15.1
+  284  set -o vi
+  285  sudo su -
+  286  ip addr show
+  287  sudo su -
+  288  set -o vi
+  289  ip addr show
+  290  sudo su -
+  291  ls -ltra
+  292  mkdir gitlab
+  293  ls -ltra
+  294  cd gitlab/
+  295  ls -ltra
+  296  git
+  297  git clone https://github.com/rodrigo-montagnana/practice.git
+  298  ls -ltra
+  299  cd practice/
+  300  ls -ltra
+  301  cat main.tf
+  302  cat variables.tf
+  303  terraform
+  304  terraform  init
+  305  terraform  validate
+  306  ls -ltra
+  307  terraform
+  308  terraform plan
+  309  usermod --append --groups libvirt `whoami`
+  310  sudo usermod --append --groups libvirt `whoami`
+  311  terraform plan
+  312  ls -ltra
+  313  cd ..
+  314  ls -ltra
+  315  rm -rf practice/
+  316  git clone https://github.com/rodrigo-montagnana/practice.git
+  317  ls -ltra
+  318  cd practice
+  319  ls -ltra
+  320  rm -rf LICENSE .gitignore .git ansible
+  321  ls -ltra
+  322  cat main.tf
+  323  cat libvirt_ubuntu.tf
+  324  rm libvirt_ubuntu.tf
+  325  ls -ltra
+  326  cat ansible_inventory.tf
+  327  vi ansible_inventory.tf
+  328  df -hPT
+  329  ls -l /data/isos/
+  330  cd /data/isos/
+  331  curl -LO http://mirror.ufscar.br/centos/8-stream/isos/x86_64/CentOS-Stream-8-20230710.0-x86_64-boot.iso
+  332  sudo chown rmontagnana /data/isos/
+  333  curl -LO http://mirror.ufscar.br/centos/8-stream/isos/x86_64/CentOS-Stream-8-20230710.0-x86_64-boot.iso
+  334  ls -ltra
+  335  cd
+  336  ls -ltra
+  337  cd gitlab/practice/
+  338  ls -ltra
+  339  vi variables.tf
+  340  vi main.tf
+  341  vi libvirt_centos.tf
+  342  terraform  init
+  343  terraform validate
+  344  ls -ltra
+  345  vi ansible_inventory.tf
+  346  terraform validate
+  347  cat inventory.tmpl
+  348  vi inventory.tmpl
+  349  terraform validate
+  350  vi inventory.tmpl
+  351  terraform validate
+  352  terraform plan
+  353  terraform apply
+  354  lo9[frontend]
+  355  %{for index, group in ansible_group_centos ~}
+  356  ${ group == "frontend" ? hostname_centos[index] : "" }
+  357  %{ endfor ~}
+  358  %{for index, group in ansible_group_ubuntu ~}
+  359  ${ group == "frontend" ? hostname_ubuntu[index] : "" }
+  360  %{ endfor ~}
+  361  [backend]
+  362  %{for index, group in ansible_group_centos ~}
+  363  ${ group == "backend" ? hostname_centos[index] : "" }
+  364  %{ endfor ~}
+  365  %{for index, group in ansible_group_ubuntu ~}
+  366  ${ group == "backend" ? hostname_ubuntu[index] : "" }
+  367  qemu-kvm
+  368  sudo su -
+  369  terraform apply
+  370  /usr/libexec/qemu-kvm
+  371  sudo su -
+  372  terraform apply
+  373  sudo terraform apply
+  374  ls -ltra
+  375  cat libvirt_centos.tf
+  376  cat /sys/module/kvm_intel/parameters/nested
+  377  cat /sys/module/kvm/parameters/nested
+  378  ls -l /sys/module/
+  379  ls /sys/module/
+  380  sudo su -
+  381  set -o vi
+  382  sudo su -
+  383  history
+
+D:\Program Files (x86)\virtual_box\vms\kvm\kvm\kvm.vdi
